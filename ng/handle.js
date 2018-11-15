@@ -4,7 +4,7 @@
   .controller('CodeforcesHandle', [ '$http', function ($http) {
     // User handle
     this.handle = '';
-    
+
     this.userInfo     = null;
     this.status       = null;
     this.ratingChange = null;
@@ -35,7 +35,7 @@
           angular.forEach(data.result, function (sub, key) {
             var cid = sub.contestId;
             var pid = sub.problem.index;
-            
+
             if (tmp[cid] == null) tmp[cid] = { contestId: cid, problems: {} };
             if (tmp[cid].problems[pid] == null) tmp[cid].problems[pid] = {subs: [], ok: false};
 
@@ -46,7 +46,6 @@
 
           me.status = [];
           angular.forEach(tmp, function (contest, id) {
-            if (id < 100000) {
               var cc = {
                 'contestId': id,
                 problems: []
@@ -75,7 +74,6 @@
               });
 
               me.status.push(cc);
-            }
           });
 
           me.status.sort(function (a, b) {
